@@ -1,0 +1,35 @@
+<div class="jumbotron py-3">
+    <h1 class="display-4 text-center">Bikes</h1>
+</div>
+<div class="row">
+    <div class="col-md-10">
+        <div>
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Manufacturer</th>
+                        <th>Model</th>
+                        <th>Frame Size</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let bike of bikeList">
+                    <td (click)="populateForm(bike)">{{bike.manufacturer.name}}</td>
+                    <td (click)="populateForm(bike)">{{bike.model}}</td>
+                    <td (click)="populateForm(bike)">{{bike.frameSize}}</td>
+                    <td (click)="populateForm(bike)">{{bike.price | currency}}</td>
+                    <td>
+                        <button class="btn btn-info" (click)="onDelete(bike.id)">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <button class="btn btn-info btn-lg" (click)="newForm()">New</button>
+</div>
+<div class="row">
+    <app-bike-detail [bike]="currentBike" (refresh)="ngOnInit()"></app-bike-detail>
+</div>
